@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/other/Spritbge.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/dark/Darkness.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/tileset/tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/torch/Torch.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/finishlevel/Finish.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/spikes/Spike.tscn" type="PackedScene" id=7]
+
+[node name="Level4" type="Node" index="0"]
+
+[node name="Spritbge" parent="." index="0" instance=ExtResource( 1 )]
+
+scale = Vector2( 40, 30 )
+
+[node name="Darkness" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 256, 176 )
+scale = Vector2( 2.55, 2.1 )
+
+[node name="TileMap" type="TileMap" parent="." index="2"]
+
+scale = Vector2( 2, 2 )
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 0, 16, 0, 1, 20, 0, 2, 20, 0, 3, 20, 0, 4, 20, 0, 5, 20, 0, 6, 20, 0, 7, 20, 0, 8, 20, 0, 11, 20, 0, 12, 20, 0, 13, 20, 0, 14, 20, 0, 15, 20, 0, 16, 20, 0, 17, 20, 0, 18, 20, 0, 19, 17, 0, 65536, 21, 0, 65555, 1610612757, 0, 131072, 21, 0, 131091, 1610612757, 0, 196608, 21, 0, 196619, 12, 0, 196627, 1610612757, 0, 262144, 21, 0, 262152, 12, 0, 262163, 1610612757, 0, 327680, 21, 0, 327699, 1610612757, 0, 393216, 21, 0, 393235, 1610612757, 0, 458752, 21, 0, 458755, 9, 0, 458756, 10, 0, 458757, 10, 0, 458758, 11, 0, 458760, 15, 0, 458771, 1610612757, 0, 524288, 21, 0, 524296, 14, 0, 524307, 1610612757, 0, 589824, 21, 0, 589832, 14, 0, 589843, 1610612757, 0, 655360, 21, 0, 655368, 13, 0, 655379, 1610612757, 0, 720896, 21, 0, 720906, 9, 0, 720907, 10, 0, 720908, 10, 0, 720909, 10, 0, 720910, 10, 0, 720911, 11, 0, 720915, 1610612757, 0, 786432, 21, 0, 786451, 1610612757, 0, 851968, 21, 0, 851987, 1610612757, 0, 917504, 19, 0, 917505, 1610612756, 0, 917506, 1610612756, 0, 917507, 1610612756, 0, 917508, 1610612756, 0, 917509, 1610612756, 0, 917510, 1610612756, 0, 917511, 1610612756, 0, 917512, 1610612756, 0, 917513, 1610612756, 0, 917514, 1610612756, 0, 917515, 1610612756, 0, 917516, 1610612756, 0, 917517, 1610612756, 0, 917518, 1610612756, 0, 917519, 1610612756, 0, 917520, 1610612756, 0, 917521, 1610612756, 0, 917522, 1610612756, 0, 917523, 18, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Player" parent="." index="3" instance=ExtResource( 4 )]
+
+position = Vector2( 304, 432 )
+
+[node name="Torch" parent="." index="4" instance=ExtResource( 5 )]
+
+position = Vector2( 208, 160 )
+
+[node name="Finish" parent="." index="5" instance=ExtResource( 6 )]
+
+position = Vector2( 320, 16 )
+level = "res://scenes/Levels/Level1.tscn"
+
+[node name="Spikes" type="Node" parent="." index="6"]
+
+editor/display_folded = true
+
+[node name="Spike" parent="Spikes" index="0" instance=ExtResource( 7 )]
+
+position = Vector2( 399.842, 332.149 )
+
+[node name="Spike2" parent="Spikes" index="1" instance=ExtResource( 7 )]
+
+position = Vector2( 424.389, 332.149 )
+
+[node name="Spike3" parent="Spikes" index="2" instance=ExtResource( 7 )]
+
+position = Vector2( 448.272, 332.149 )
+
+[node name="Spike4" parent="Spikes" index="3" instance=ExtResource( 7 )]
+
+position = Vector2( 375.959, 332.149 )
+
+[node name="spawn" type="Position2D" parent="." index="7"]
+
+position = Vector2( 304, 448 )
+
+[connection signal="died" from="Player" to="." method="_on_Player_died"]
+
+[connection signal="light" from="Torch" to="Finish" method="_on_Torch_light"]
+
+

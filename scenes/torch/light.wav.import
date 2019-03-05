@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/light.wav-27e080e6ebe0111488e0aa7fb1ce8e8d.sample"
+
+[deps]
+
+source_file="res://scenes/torch/light.wav"
+dest_files=[ "res://.import/light.wav-27e080e6ebe0111488e0aa7fb1ce8e8d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
